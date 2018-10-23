@@ -17,7 +17,7 @@ laravel-admin-leaflet
 * **Vendor**: bavix
 * **Package**: laravel-admin-leaflet
 * **Version**: [![Latest Stable Version](https://poser.pugx.org/bavix/laravel-admin-leaflet/v/stable)](https://packagist.org/packages/bavix/laravel-admin-leaflet)
-* **PHP Version**: 7.2+ 
+* **PHP Version**: 7.1+ 
 * **[Composer](https://getcomposer.org/):** `composer require bavix/laravel-admin-leaflet`
 
 Get Started
