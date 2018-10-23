@@ -1,7 +1,7 @@
 laravel-admin-leaflet
 ======
 
-![image](https://user-images.githubusercontent.com/5111255/47364144-3c276300-d6e1-11e8-81d0-925d0d8cc886.png)
+![_2018-10-23_16-33-59](https://user-images.githubusercontent.com/5111255/47364262-8ad4fd00-d6e1-11e8-846f-8a44b59993ea.png)
 
 Get Started
 ---
