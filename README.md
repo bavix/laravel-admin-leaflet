@@ -1,4 +1,4 @@
-laravel-admin extension
+laravel-admin-leaflet
 ======
 
 Get Started
