@@ -1,6 +1,6 @@
 {
     "name": "bavix/laravel-admin-leaflet",
-    "description": "OpenStreetMap map for laravel-admin",
+    "description": "OpenStreetMap for laravel-admin",
     "type": "library",
     "keywords": ["laravel-admin", "extension", "open-street-map", "leaflet"],
     "homepage": "https://github.com/bavix/laravel-admin-leaflet",
