@@ -20,7 +20,7 @@ class LeafletServiceProvider extends ServiceProvider
             $this->loadViewsFrom($views, 'laravel-admin-leaflet');
         }
 
-        $this->app->booted(function () {
+        $this->app->booted(function() {
             Form::extend('leaflet', LeafletMap::class);
         });
     }
