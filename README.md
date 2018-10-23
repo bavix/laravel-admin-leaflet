@@ -10,6 +10,16 @@ composer require bavix/laravel-admin-leaflet
 How to use?
 ---
 
+Enable `leaflet` in config. config/admin.php
+```
+    'extensions' => [
+        'leaflet' => [
+            'enable' => true,
+        ],
+    ],
+```
+
+Write in the YourController.php
 ```
 $form->leaflet('latitude', 'longitude');
 ```
