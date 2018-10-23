@@ -1,0 +1,33 @@
+{
+    "name": "bavix/laravel-admin-leaflet",
+    "description": "OpenStreetMap map for laravel-admin",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension", "open-street-map", "leaflet"],
+    "homepage": "https://github.com/bavix/laravel-admin-leaflet",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Babichev Maxim",
+            "email": "info@babichev.net"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.0",
+        "encore/laravel-admin": "~1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bavix\\Leaflet\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bavix\\Leaflet\\LeafletServiceProvider"
+            ]
+        }
+    }
+}
