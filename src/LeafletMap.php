@@ -2,22 +2,12 @@
 
 namespace Bavix\Leaflet;
 
-use Encore\Admin\Form\Field;
 use Bavix\Leaflet\Tiles\Sputnik;
+use Encore\Admin\Form\Field;
 use Illuminate\Support\Str;
 
 class LeafletMap extends Field
 {
-
-    /**
-     * @var Tile
-     */
-    protected $tile;
-
-    /**
-     * @var string
-     */
-    protected $view = 'laravel-admin-leaflet::leaflet';
 
     /**
      * @var array
@@ -26,7 +16,6 @@ class LeafletMap extends Field
         'https://unpkg.com/leaflet@1.3.4/dist/leaflet.css',
         'https://unpkg.com/leaflet-geosearch@2.7.0/assets/css/leaflet.css',
     ];
-
     /**
      * @var array
      */
@@ -34,6 +23,14 @@ class LeafletMap extends Field
         'https://unpkg.com/leaflet@1.3.4/dist/leaflet.js',
         'https://unpkg.com/leaflet-geosearch@2.7.0/dist/bundle.min.js',
     ];
+    /**
+     * @var Tile
+     */
+    protected $tile;
+    /**
+     * @var string
+     */
+    protected $view = 'laravel-admin-leaflet::leaflet';
 
     /**
      * LeafletMap constructor.
@@ -53,80 +50,6 @@ class LeafletMap extends Field
 
         $this->options((array)\config('admin.extensions.leaflet.config'));
         parent::__construct($column, $arguments);
-    }
-
-    /**
-     * @return Tile
-     */
-    protected function getTile(): Tile
-    {
-        if (!$this->tile) {
-            $class = $this->options['tile'] ?? Sputnik::class;
-            $this->tile = new $class();
-        }
-
-        return $this->tile;
-    }
-
-    /**
-     * @return string
-     */
-    protected function tileOptions(): string
-    {
-        return \json_encode([
-            'attribution' => $this->getTile()->attribution(),
-            'maxZoom' => $this->getTile()->maxZoom(),
-        ]);
-    }
-
-    /**
-     * @return int
-     */
-    protected function zoom(): int
-    {
-        return $this->options['zoom'] ?? ($this->getTile()->maxZoom() - 1);
-    }
-
-    /**
-     * @return string
-     */
-    protected function style(): string
-    {
-        return $this->options['style'] ?? 'bar';
-    }
-
-    /**
-     * @return string
-     */
-    protected function provider(): string
-    {
-        switch ($this->options['geoProvider'] ?? '') {
-            case 'bing': return 'BingProvider';
-            case 'esri': return 'EsriProvider';
-            case 'google': return 'GoogleProvider';
-            case 'locationIQ': return 'LocationIQProvider';
-        }
-
-        return 'OpenStreetMapProvider';
-    }
-
-    /**
-     * @return string
-     */
-    protected function providerParams(): string
-    {
-        switch ($this->options['geoProvider'] ?? '') {
-            case 'bing':
-            case 'google':
-            case 'locationIQ':
-                return json_encode([
-                    'params' => [
-                        'key' => config('admin.extensions.leaflet.keys.' . $this->options['geoProvider'])
-                    ]
-                ]);
-        }
-
-        return '';
     }
 
     /**
@@ -158,6 +81,84 @@ class LeafletMap extends Field
 script;
 
         return parent::render();
+    }
+
+    /**
+     * @return int
+     */
+    protected function zoom(): int
+    {
+        return $this->options['zoom'] ?? ($this->getTile()->maxZoom() - 1);
+    }
+
+    /**
+     * @return Tile
+     */
+    protected function getTile(): Tile
+    {
+        if (!$this->tile) {
+            $class = $this->options['tile'] ?? Sputnik::class;
+            $this->tile = new $class();
+        }
+
+        return $this->tile;
+    }
+
+    /**
+     * @return string
+     */
+    protected function tileOptions(): string
+    {
+        return \json_encode([
+            'attribution' => $this->getTile()->attribution(),
+            'maxZoom' => $this->getTile()->maxZoom(),
+        ]);
+    }
+
+    /**
+     * @return string
+     */
+    protected function provider(): string
+    {
+        switch ($this->options['geoProvider'] ?? '') {
+            case 'bing':
+                return 'BingProvider';
+            case 'esri':
+                return 'EsriProvider';
+            case 'google':
+                return 'GoogleProvider';
+            case 'locationIQ':
+                return 'LocationIQProvider';
+        }
+
+        return 'OpenStreetMapProvider';
+    }
+
+    /**
+     * @return string
+     */
+    protected function providerParams(): string
+    {
+        switch ($this->options['geoProvider'] ?? '') {
+            case 'bing':
+            case 'google':
+            case 'locationIQ':
+                return json_encode([
+                    'params' => [
+                        'key' => config('admin.extensions.leaflet.keys.' . $this->options['geoProvider'])
+                    ]
+                ]);
+        }
+
+        return '';
+    }
+
+    /**
+     * @return string
+     */
+    protected function style(): string
+    {
+        return $this->options['style'] ?? 'bar';
     }
 
 }

@@ -12,8 +12,8 @@ class LeafletServiceProvider extends ServiceProvider
      */
     public function boot(Leaflet $extension)
     {
-        if (! Leaflet::boot()) {
-            return ;
+        if (!Leaflet::boot()) {
+            return;
         }
 
         if ($views = $extension->views()) {
