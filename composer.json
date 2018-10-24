@@ -2,7 +2,7 @@
     "name": "bavix/laravel-admin-leaflet",
     "description": "OpenStreetMap for laravel-admin",
     "type": "library",
-    "keywords": ["laravel-admin", "extension", "openstreetmap", "map", "leaflet"],
+    "keywords": ["laravel", "laravel-admin", "extension", "openstreetmap", "map", "leaflet"],
     "homepage": "https://github.com/bavix/laravel-admin-leaflet",
     "license": "MIT",
     "authors": [
